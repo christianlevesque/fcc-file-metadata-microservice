@@ -19,7 +19,7 @@ namespace file_metadata.Controllers
 				{
 					Name = upfile.FileName,
 					Size = upfile.Length,
-					Type = Request.ContentType
+					Type = upfile.ContentType
 				};
 			}
 			catch (Exception)
