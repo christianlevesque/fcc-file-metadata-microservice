@@ -9,7 +9,6 @@ namespace file_metadata
 	{
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
 			services.AddCors(options =>
 			{
 				options.AddDefaultPolicy(policy =>
@@ -19,6 +18,7 @@ namespace file_metadata
 						  .AllowAnyHeader();
 				});
 			});
+			services.AddControllers();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
