@@ -10,12 +10,23 @@ namespace file_metadata
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
+			services.AddCors(options =>
+			{
+				options.AddDefaultPolicy(policy =>
+				{
+					policy.WithOrigins("https://www.freecodecamp.org")
+						  .WithMethods("POST")
+						  .AllowAnyHeader();
+				});
+			});
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
 				app.UseDeveloperExceptionPage();
+
+			app.UseCors();
 
 			app.UseRouting();
 
